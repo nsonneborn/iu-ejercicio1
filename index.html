@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="script.js"></script>
 </head>
 <body onload="document.getElementById('id01').style.display='inline-block'">
@@ -10,31 +11,21 @@
   <form class="modal-content animate" action="/action_page.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/200px-Crystal_Clear_kdm_user_female.svg.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
       <label><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
-
       <label><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <button type="submit">Login</button>
-      <input type="checkbox" checked="checked"> Remember me
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
+      <button type="submit" class="loginbtn">Login</button>
+      <input type="checkbox" checked="checked" class="checkbox"> Remember me
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
   </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
   </form>
   <div class="header">
     <img class="logo" src="https://cdn0.iconfinder.com/data/icons/thin-users-people/57/thin-192_user_profile_avatar_female-512.png" alt="icon female user">
@@ -63,46 +54,54 @@
   <h3>Personal Information</h3>
   <div class="info">
     <form>
-      First Name:<br>
-      <input type="text" name="firstname" required><br>
-      Last Name:<br>
-      <input type="text" name="lastname" required><br>
-      Email: <br>
-      <input type="email" name="email" required><br>
-      Date of Birth: <br>
-      <input type="date" name="dob" required><br>
-      Language:<br>
-      <select>
+      <label for="fname">First Name:</label>
+      <input id="fname" type="text" name="fname" required>
+      <label for="lname">Last Name:</label>
+      <input id="lname" type="text" name="lastname" required>
+      <label for="email">Email: </label>
+      <input id="email" type="email" name="email" required>
+      <label for="dob">Date of Birth: </label>
+      <input id="dob" type="date" name="dob" required>
+      <label for="lang">Language:</label>
+      <select id="lang">
         <option vale="english">English</option>
         <option value="spanish">Spanish</option>
-      </select> <br>
-      Profile Picture: <br>
-      <input type="image" name="profpic"><br>
+      </select>
+      <label for="profpic">Profile Picture: </label>
+      <input id="profpic" type="image" name="profpic">
     </form>
   </div>
   <hr>
 
   <h3>Billing Information</h3>
   <div class="info">
-    Address:<br>
-    <input type="text" name="address" value="Calle Prim 2, Madrid, 10000, Spain", size="50" required><br>
-    Payment method:<br>
-    <select>
-      <option vale="visa">Visa</option>
-      <option value="mastercard">Mastercard</option>
-      <option value="amex">American Express</option>
+    <form>
+    <label for="address">Address:</label>
+    <input id="address" type="text" name="address" value="Calle Prim 2, Madrid, 10000, Spain", size="50" required><br>
+    <label for="paymentmethod">Payment method:</label>
+    <select id="paymentmethod">
+      <option vale="credit">Credit Card</option>
+      <option value="transfer">Wire Transfer</option>
+      <option value="paypal">Paypal</option>
     </select>
-    <br>
-    Number:<br>
-    <input type="text" name="ccnumber" value="1111 2222 3333 4444"><br>
-    Valid Thru:<br>
-    <input type="month" name="validthru"><br>
-    Code: <br>
-    <input type="text" name="code" value="000" size="3"><br>
-    <input type="month" name="validthru">
-    <br>
-    Code: <br>
-    <input type="text" name="code" value="000"><br>
+    <div class="creditcard">
+      <label>Card Type</label>
+      <select>
+        <option vale="visa">Visa</option>
+        <option value="mastercard">Mastercard</option>
+        <option value="amex">American Express</option>
+      </select>
+      <label for="ccnumber">Number:</label>
+      <input type="text" id="ccnumber" name="ccnumber" placeholder="1111 2222 3333 4444" required><br>
+      <label for="validthru">Valid Thru:</label>
+      <input id="validthru" type="month" name="validthru" required>
+      <label for="cvv">CVV Code: </label>
+      <input id="cvv" type="text" name="cvv" placeholder="000" size="3"
+      maxlength="3" pattern="[0-9]{3}" title = "Three digit CVV code from back of card"
+      required>
+    </div>
+    <input type="checkbox" class="checkbox"> I have read and agree to the terms and conditions.
+  </form>
   </div>
 
 </body>

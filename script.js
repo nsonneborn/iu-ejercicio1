@@ -1,3 +1,13 @@
+
+// just tryna play with regular expresions
+function validatePassword() {
+  var psw = blah // fill this in lol
+  if (!/^\w{1,8}$/.test(psw)){
+    alert("Password can only contain number and letter characters and has maximum length 8")
+  }
+}
+
+
 function validateForm() {
     var x = document.forms["myForm"]["fname"].value;
     if (x == "") {
