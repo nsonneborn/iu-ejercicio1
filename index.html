@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
   <div class="header">
@@ -14,20 +15,38 @@
     </div>
   </div>
   <br>
+
+
+  <h3>Account Information</h3>
+  <div class="info">
+    <form>
+      Username:<br>
+      <input type="text" name="username" required><br>
+      Password:<br>
+      <input type="password" name="password" required><br>
+    </form>
+  </div>
+  <hr>
+
+
   <h3>Personal Information</h3>
   <div class="info">
     <form>
       First Name:<br>
-      <input type="text" name="firstname" value="Nina"><br>
+      <input type="text" name="firstname" required><br>
       Last Name:<br>
-      <input type="text" name="lastname" value="Sonneborn"><br>
+      <input type="text" name="lastname" required><br>
+      Email: <br>
+      <input type="email" name="email" required><br>
       Date of Birth: <br>
-      <input type="date" name="dob"><br>
+      <input type="date" name="dob" required><br>
       Language:<br>
       <select>
         <option vale="english">English</option>
         <option value="spanish">Spanish</option>
-      </select>
+      </select> <br>
+      Profile Picture: <br>
+      <input type="image" name="profpic"><br>
     </form>
   </div>
   <hr>
@@ -35,7 +54,7 @@
   <h3>Billing Information</h3>
   <div class="info">
     Address:<br>
-    <input type="text" name="address" value="Calle Prim 2, Madrid, 10000, Spain", size="50"><br>
+    <input type="text" name="address" value="Calle Prim 2, Madrid, 10000, Spain", size="50" required><br>
     Payment method:<br>
     <select>
       <option vale="visa">Visa</option>
