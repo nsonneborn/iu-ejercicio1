@@ -3,24 +3,24 @@
 <head>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="script.js"></script>
 </head>
 <body onload="document.getElementById('id01').style.display='inline-block'">
   <div id="id01" class="modal">
 
-  <form class="modal-content animate" action="/action_page.php">
+  <form name ="modal" class="modal-content animate">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/200px-Crystal_Clear_kdm_user_female.svg.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
       <label><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
-      <button type="submit" class="loginbtn">Login</button>
-      <input type="checkbox" checked="checked" class="checkbox"> Remember me
+      <button type="submit" class="loginbtn" onclick="saveCookie()">Login</button>
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
   </form>
@@ -53,7 +53,7 @@
 
   <h3>Personal Information</h3>
   <div class="info">
-    <form>
+    <form name="personalinfo" onsubmit="return validateForm()">
       <label for="fname">First Name:</label>
       <input id="fname" type="text" name="fname" required>
       <label for="lname">Last Name:</label>
@@ -68,23 +68,25 @@
         <option value="spanish">Spanish</option>
       </select>
       <label for="profpic">Profile Picture: </label>
-      <input id="profpic" type="image" name="profpic">
+      <input id="profpic" type="file" name="profpic" accept="image/gif, image/jpeg, image/png">
+      <br>
+      <button type="submit" onclick="saveCookie()">Submit</button>
     </form>
   </div>
   <hr>
 
   <h3>Billing Information</h3>
   <div class="info">
-    <form>
+    <form id="billinginfo">
     <label for="address">Address:</label>
     <input id="address" type="text" name="address" value="Calle Prim 2, Madrid, 10000, Spain", size="50" required><br>
     <label for="paymentmethod">Payment method:</label>
-    <select id="paymentmethod">
+    <select id="paymentmethod" onchange="optionCheck()">
       <option vale="credit">Credit Card</option>
       <option value="transfer">Wire Transfer</option>
       <option value="paypal">Paypal</option>
     </select>
-    <div class="creditcard">
+    <div id="creditcardDiv" class="visible">
       <label>Card Type</label>
       <select>
         <option vale="visa">Visa</option>
@@ -100,7 +102,24 @@
       maxlength="3" pattern="[0-9]{3}" title = "Three digit CVV code from back of card"
       required>
     </div>
-    <input type="checkbox" class="checkbox"> I have read and agree to the terms and conditions.
+    <div id="transferDiv" class="hidden">
+      <label for="routingno">Routing Number:</label>
+      <input id="routingno" name="routingno" type="text"
+      pattern="[0-9]{10}" title = "Ten digit routing number" required>
+      <label for="accountno">Account Number:</label>
+      <input id="accountno" name="accountno" type="text"
+      pattern="[0-9]{10}" title = "Ten digit account number" required>
+      <label for="bank">Bank:</label>
+      <input id="routingno" name="routingno" type="text" required>
+    </div>
+    <div id="paypalDiv" class="hidden">
+      Please enter account information on <a href="https://www.paypal.com/es/home">Paypal</a>
+      <br>
+    </div>
+    <input type="checkbox" class="checkbox" required> I have read and agree to the terms and conditions.
+    <br>
+    <button type="submit">Save</button>
+    <button>Delete</button>
   </form>
   </div>
 

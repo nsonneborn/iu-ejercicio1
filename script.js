@@ -6,30 +6,20 @@ function validatePassword() {
     alert("Password can only contain number and letter characters and has maximum length 8")
   }
 }
+function validateForm(){
+  validateEmail()
 
-
-function validateForm() {
-    var x = document.forms["myForm"]["fname"].value;
-    if (x == "") {
-        alert("Name must be filled out");
-        return false;
-    }
 }
-
 function validateEmail()
 {
-   var emailID = document.myForm.EMail.value;
-   atpos = emailID.indexOf("@");
-   dotpos = emailID.lastIndexOf(".");
-
-   if (atpos < 1 || ( dotpos - atpos < 2 ))
-   {
-      alert("Please enter correct email ID")
-      document.myForm.EMail.focus() ;
-      return false;
-   }
-   return( true );
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(personalinfo.email.value))
+  {
+    return (true)
+  }
+    alert("You have entered an invalid email address!")
+    return (false)
 }
+
 
 // Get the modal
 var modal = document.getElementById('id01');
@@ -42,7 +32,6 @@ window.onclick = function(event) {
 }
 
 
-
 // Cookies stuff skeleton from W3schools
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -50,6 +39,23 @@ function setCookie(cname, cvalue, exdays) {
     var expires = "expires="+d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+
+ function saveCookie(){
+   var username = document.modal.email.value;
+   var password = document.modal.psw.value;
+   var fname = document.personalinfo.fname.value;
+   var lname = document.personalinfo.lname.value;
+   var email = document.personalinfo.email.value;
+   var dob = document.personalinfo.dob.value;
+   var lang = document.personalinfo.lang.value;
+   var profpic = document.personalinfo.profpic.value;
+   document.cookie = "user=" + username + ";" + "password=" + password + ";" +
+    "firstName=" + fname +";" + "lastName=" +
+   lname +";"+ "email=" + email +";" + "dateOfBirth" + dob +";"
+   + "language=" + lang +";" + "profPic" + profic+";"
+
+ }
+
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -76,4 +82,29 @@ function checkCookie() {
             setCookie("username", user, 365);
         }
     }
+}
+
+function optionCheck() {
+  selectOptions = document.getElementById("paymentmethod");
+
+  helpDiv1 = document.getElementById("creditcardDiv");
+  helpDiv2 = document.getElementById("transferDiv");
+  helpDiv3 = document.getElementById("paypalDiv");
+
+
+  if (selectOptions.options[0].selected) {
+    helpDiv1.className = "visible";
+  } else {
+      helpDiv1.className = "hidden";
+  }
+  if (selectOptions.options[1].selected) {
+      helpDiv2.className = "visible";
+  } else {
+    helpDiv2.className = "hidden";
+  }
+  if (selectOptions.options[2].selected) {
+      helpDiv3.className = "visible";
+  } else {
+    helpDiv3.className = "hidden";
+  }
 }
