@@ -26,7 +26,6 @@
   </form>
   </div>
 
-  </form>
   <div class="header">
     <img class="logo" src="https://cdn0.iconfinder.com/data/icons/thin-users-people/57/thin-192_user_profile_avatar_female-512.png" alt="icon female user">
     <h1>My Account</h1>
@@ -45,7 +44,7 @@
       Username:<br>
       <input type="text" name="username" required><br>
       Password:<br>
-      <input type="password" name="password" required><br>
+      <input type="password" name="password" placeholder="********" required><br>
     </form>
   </div>
   <hr>
@@ -55,11 +54,11 @@
   <div class="info">
     <form name="personalinfo" onsubmit="return validateForm()">
       <label for="fname">First Name:</label>
-      <input id="fname" type="text" name="fname" required>
+      <input id="fname" type="text" name="fname" placeholder="Holley"required>
       <label for="lname">Last Name:</label>
-      <input id="lname" type="text" name="lastname" required>
+      <input id="lname" type="text" name="lastname" placeholder="McShan" required>
       <label for="email">Email: </label>
-      <input id="email" type="email" name="email" required>
+      <input id="email" type="email" name="email" placeholder="hmm@me.com" required>
       <label for="dob">Date of Birth: </label>
       <input id="dob" type="date" name="dob" required>
       <label for="lang">Language:</label>
@@ -79,7 +78,7 @@
   <div class="info">
     <form id="billinginfo">
     <label for="address">Address:</label>
-    <input id="address" type="text" name="address" value="Calle Prim 2, Madrid, 10000, Spain", size="50" required><br>
+    <input id="address" type="text" name="address" placeholder="Calle Prim 2, Madrid, 10000, Spain", size="50" required><br>
     <label for="paymentmethod">Payment method:</label>
     <select id="paymentmethod" onchange="optionCheck()">
       <option vale="credit">Credit Card</option>
