@@ -1,33 +1,34 @@
-
-// just tryna play with regular expresions
-function validatePassword() {
-  var psw = blah // fill this in lol
-  if (!/^\w{1,8}$/.test(psw)){
-    alert("Password can only contain number and letter characters and has maximum length 8");
-  }
-}
-function validateForm(){
-  validateEmail();
-}
-function validateEmail()
-{
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(personalinfo.email.value))
-  {
-    return (true);
-  }
-    alert("You have entered an invalid email address!")
-    return (false);
-}
-
-
+// Variables
 // Get the modal
 var modal = document.getElementById('id01');
+var originalCookie = "";
 
+// **These functions have been replaced by the 'pattern' attribute in the input tags.
 
-// Cookies stuff skeleton from W3schools
+// just tryna play with regular expresions
+// function validatePassword() {
+//   var psw = blah // fill this in lol
+//   if (!/^\w{1,8}$/.test(psw)){
+//     alert("Password can only contain number and letter characters and has maximum length 8");
+//   }
+//}
+// function validateForm(){
+//   validateEmail();
+// }
+// function validateEmail()
+// {
+//  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(personalinfo.email.value))
+//   {
+//     return (true);
+//   }
+//     alert("You have entered an invalid email address!")
+//     return (false);
+// }
+
+// Cookies
 function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue;
-    console.log("set cookie called");
+    // console.log("set cookie called");
 }
 
 function modalSubmit(){
@@ -57,27 +58,38 @@ function getCookie(cname) {
 function checkCookie(email, password) {
     if (email == getCookie('email') && password == getCookie('password')) {
         console.log("recognized email and password");
+        originalCookie = document.cookie;
         fillInfo();
     } else {
-      delete_cookie(document.cookie);
+      // delete_cookie("fname");
       setCookie('email', email);
       setCookie('password', password);
       console.log("didn't recognize email/pass");
         }
+    // always fill in email and password and make them uneditable.
+    $('#email').val(email);
+    $('#password').val("*".repeat(password.length));
+    $('#email').prop('readonly', true);
+    $('#password').prop('readonly', true);
 }
 
 function fillInfo(){
-  $('#fname').val(getCookie('fname'));
-  $('#lname').val(getCookie("lname"));
-  $('#email').val(getCookie("email"));
-  $('#dob').val(getCookie("dob"));
-  $('#lang').val(getCookie("lang"));
-  $('#profpic').val(getCookie("profpic"));
+  var fields = ["fname", "lname", "email","dob","lang","profpic", "username", "address", "paymentmethod"]
+  for(var i = 0; i < fields.length; i++){
+    $('#'+fields[i]).val(getCookie(fields[i]));
+  }
+  //** for loop is much more efficient, something similar could be used for saveCookies as well
+
+  // $('#fname').val(getCookie('fname'));
+  // $('#lname').val(getCookie("lname"));
+  // $('#email').val(getCookie("email"));
+  // $('#dob').val(getCookie("dob"));
+  // $('#lang').val(getCookie("lang"));
+  // $('#profpic').val(getCookie("profpic"));
 }
 
 function saveCookie(){
-  var username = document.modal.email.value;
-  var password = document.modal.password.value;
+  var username = $('#username').val();
   var fname = document.personalinfo.fname.value;
   var lname = document.personalinfo.lname.value;
   var email = document.personalinfo.email.value;
@@ -85,7 +97,6 @@ function saveCookie(){
   var lang = document.personalinfo.lang.value;
   var profpic = document.personalinfo.profpic.value;
   setCookie("username", username);
-  setCookie("password", password);
   setCookie("fname", fname);
   setCookie("lname", lname);
   setCookie("email", email);
@@ -93,7 +104,30 @@ function saveCookie(){
   setCookie("lang", lang);
   setCookie("profpic", profpic);
 }
-
+function saveCookie2(){
+  var address = document.billinginfo.address.value;
+  var paymentmethod = document.billinginfo.paymentmethod.value;
+  setCookie("address", address);
+  setCookie("paymentmethod", paymentmethod);
+  // here, I'm not sure whether it would be yeild an error to get the value of an empty input fields
+  // it probably just returns empty string, so the if statements aren't really necessary
+  if (paymentmethod == "credit") {
+    var cardtype = document.creditcardDiv.cardtype.value;
+    var ccnumber = document.creditcardDiv.ccnumber.value;
+    var validthru = document.creditcardDiv.validthru.value;
+    var cvv = document.creditcardDiv.cvv.value;
+    setCookie("cardtype", cardtype);
+    setCookie("ccnumber", ccnumber);
+    setCookie("validthru", validthru);
+    setCookie("cvv", cvv);
+  }
+  if (paymentmethod == "transfer") {
+    var routingno = document.transferDiv.routingno.value;
+    var accountno = document.transferDiv.accountno.value;
+    var bank = document.transferDiv.bank.value;
+  }
+}
+// I don't end up using this function. Instead, the "Delete" is covered by clearForms()
 function delete_cookie(name){
    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 };
@@ -121,4 +155,9 @@ function optionCheck() {
   } else {
     helpDiv3.className = "hidden";
   }
+}
+
+function clearForms(){
+  // get all tags of type input, and set their value to the empty string.
+  $("input").val("");
 }

@@ -17,9 +17,9 @@
 
     <div class="container">
       <label><b>Email</b></label>
-      <input id="emailModal" type="text" placeholder="Enter Email" name="email" required>
+      <input id="emailModal" type="text" placeholder="Enter Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
       <label><b>Password</b></label>
-      <input id="passwordModal"type="password" placeholder="Enter Password" name="password" required>
+      <input id="passwordModal"type="password" placeholder="Enter Password" name="password" pattern=".{0,8}" required>
       <button type="button" class="loginbtn" onclick="modalSubmit()">Login</button>
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
@@ -42,9 +42,9 @@
   <div class="info">
     <form>
       Username:<br>
-      <input type="text" name="username" required><br>
+      <input id="username" type="text" name="username" required><br>
       Password:<br>
-      <input type="password" name="password" placeholder="********" required><br>
+      <input id = "password" type="password" name="password" placeholder="********" required><br>
     </form>
   </div>
   <hr>
@@ -52,13 +52,13 @@
 
   <h3>Personal Information</h3>
   <div class="info">
-    <form name="personalinfo" onsubmit="return validateForm()">
+    <form name="personalinfo" onsubmit="saveCookie()" >
       <label for="fname">First Name:</label>
       <input id="fname" type="text" name="fname" placeholder="Holley"required>
       <label for="lname">Last Name:</label>
       <input id="lname" type="text" name="lastname" placeholder="McShan" required>
       <label for="email">Email: </label>
-      <input id="email" type="email" name="email" placeholder="hmm@me.com" required>
+      <input id="email" type="email" name="email" placeholder="hmm@me.com"  required>
       <label for="dob">Date of Birth: </label>
       <input id="dob" type="date" name="dob" required>
       <label for="lang">Language:</label>
@@ -69,14 +69,14 @@
       <label for="profpic">Profile Picture: </label>
       <input id="profpic" type="file" name="profpic" accept="image/gif, image/jpeg, image/png">
       <br>
-      <button type="button" onclick="saveCookie()">Submit</button>
+      <button type="submit" >Submit</button>
     </form>
   </div>
   <hr>
 
   <h3>Billing Information</h3>
   <div class="info">
-    <form id="billinginfo">
+    <form id="billinginfo" onsubmit="saveCookie2()">
     <label for="address">Address:</label>
     <input id="address" type="text" name="address" placeholder="Calle Prim 2, Madrid, 10000, Spain", size="50" required><br>
     <label for="paymentmethod">Payment method:</label>
@@ -87,8 +87,8 @@
     </select>
     <div id="creditcardDiv" class="visible">
       <label>Card Type</label>
-      <select>
-        <option vale="visa">Visa</option>
+      <select id ="cardtype">
+        <option value="visa">Visa</option>
         <option value="mastercard">Mastercard</option>
         <option value="amex">American Express</option>
       </select>
@@ -109,7 +109,7 @@
       <input id="accountno" name="accountno" type="text"
       pattern="[0-9]{10}" title = "Ten digit account number" required>
       <label for="bank">Bank:</label>
-      <input id="routingno" name="routingno" type="text" required>
+      <input id="bank" name="bank" type="text" required>
     </div>
     <div id="paypalDiv" class="hidden">
       Please enter account information on <a href="https://www.paypal.com/es/home">Paypal</a>
@@ -117,8 +117,8 @@
     </div>
     <input type="checkbox" class="checkbox" required> I have read and agree to the terms and conditions.
     <br>
-    <button type="submit">Save</button>
-    <button>Delete</button>
+    <button type="submit" >Save</button>
+    <button onclick="clearForms()">Delete</button>
   </form>
   </div>
 
