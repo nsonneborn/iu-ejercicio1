@@ -6,33 +6,28 @@ function validatePassword() {
     alert("Password can only contain number and letter characters and has maximum length 8")
   }
 }
-function validateForm(){
+
+function validateForm(){  //confirmar email del form
   validateEmail();
 }
-function validateEmail()
-{
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(personalinfo.email.value))
-  {
+
+function validateEmail(){   //confirmar email del cookie
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(personalinfo.email.value)){
     return (true);
   }
     alert("You have entered an invalid email address!");
     return (false);
 }
 
+var modal = document.getElementById('id01'); // Get the modal
 
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function(event) {  // cerrar modal cuando se hace clic
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
 
-
-// Cookies stuff skeleton from W3schools
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cname, cvalue, exdays) { //Cookie stuff skeleton from W3s
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires="+d.toUTCString();
@@ -52,9 +47,7 @@ function setCookie(cname, cvalue, exdays) {
     "firstName=" + fname +";" + "lastName=" +
    lname +";"+ "email=" + email +";" + "dateOfBirth" + dob +";"
    + "language=" + lang +";" + "profPic" + profic+";"
-
  }
-
 
 function getCookie(cname) {
     var name = cname + "=";
