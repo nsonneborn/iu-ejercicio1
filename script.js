@@ -1,23 +1,22 @@
 
 // just tryna play with regular expresions
 function validatePassword() {
-  var psw = blah // fill this in lol
+  var psw = blah; // fill this in lol
   if (!/^\w{1,8}$/.test(psw)){
     alert("Password can only contain number and letter characters and has maximum length 8")
   }
 }
 function validateForm(){
-  validateEmail()
-
+  validateEmail();
 }
 function validateEmail()
 {
  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(personalinfo.email.value))
   {
-    return (true)
+    return (true);
   }
-    alert("You have entered an invalid email address!")
-    return (false)
+    alert("You have entered an invalid email address!");
+    return (false);
 }
 
 
