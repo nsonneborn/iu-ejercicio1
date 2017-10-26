@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 // just tryna play with regular expresions
 function validatePassword() {
@@ -49,33 +48,11 @@ function setCookie(cname, cvalue, exdays) { //Cookie stuff skeleton from W3s
    lname +";"+ "email=" + email +";" + "dateOfBirth" + dob +";"
    + "language=" + lang +";" + "profPic" + profic+";"
  }
-=======
 // Variables
 // Get the modal
 var modal = document.getElementById('id01');
 var originalCookie = "";
 
-// **These functions have been replaced by the 'pattern' attribute in the input tags.
-
-// just tryna play with regular expresions
-// function validatePassword() {
-//   var psw = blah // fill this in lol
-//   if (!/^\w{1,8}$/.test(psw)){
-//     alert("Password can only contain number and letter characters and has maximum length 8");
-//   }
-//}
-// function validateForm(){
-//   validateEmail();
-// }
-// function validateEmail()
-// {
-//  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(personalinfo.email.value))
-//   {
-//     return (true);
-//   }
-//     alert("You have entered an invalid email address!")
-//     return (false);
-// }
 
 // Cookies
 function setCookie(cname, cvalue) {
@@ -90,7 +67,6 @@ function modalSubmit(){
   console.log(document.cookie);
   document.getElementById('id01').style.display='none';
 }
->>>>>>> 97e28879bf7bf501cf4c213b3a5fea22c655d596
 
 function getCookie(cname) {
   var name = cname + "=";
